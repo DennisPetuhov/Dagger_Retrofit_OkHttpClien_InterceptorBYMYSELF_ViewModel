@@ -1,4 +1,4 @@
-package com.example.daggerretrofit_okhttpclieninterceptorbymyself.DI
+package com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.DI
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

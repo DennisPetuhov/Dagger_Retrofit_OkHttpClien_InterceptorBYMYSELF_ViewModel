@@ -1,4 +1,4 @@
-package com.example.daggerretrofit_okhttpclieninterceptorbymyself.RETROFIT
+package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain
 
 
 data class SignUpForm(

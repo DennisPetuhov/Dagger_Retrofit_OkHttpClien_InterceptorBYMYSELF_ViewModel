@@ -1,7 +1,6 @@
-package com.example.daggerretrofit_okhttpclieninterceptorbymyself.RETROFIT
+package com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api
 
 import android.content.SharedPreferences
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.App.App
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -18,10 +17,11 @@ class  MyInterceptor @Inject constructor(var pref: SharedPreferences) : Intercep
         val request = chain.request()
         val requestBuilder = request.newBuilder()
         lateinit var newRequest: Request
-        if ((request.url()
-                .equals("https://jwt-springsecurity.herokuapp.com/api/auth/signin") ||
-                    request.url()
-                        .equals("https://jwt-springsecurity.herokuapp.com/api/auth/signup")
+        println(request.url().toString()+"********************")
+        println(request.url().host().toString()+"HOST********************")
+        if ((request.url().toString().contentEquals("https://jwt-springsecurity.herokuapp.com/api/auth/signin", true) ||
+                    request.url().toString()
+                        .contentEquals("https://jwt-springsecurity.herokuapp.com/api/auth/signup",true)
                     )
         ) {
             newRequest = requestBuilder.build()

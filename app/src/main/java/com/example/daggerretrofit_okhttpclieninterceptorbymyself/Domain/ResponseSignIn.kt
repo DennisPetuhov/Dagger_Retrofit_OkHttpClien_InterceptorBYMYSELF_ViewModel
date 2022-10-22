@@ -1,10 +1,10 @@
-package com.example.daggerretrofit_okhttpclieninterceptorbymyself.RETROFIT
+package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain
 
 data class ResponseSignIn (
-    val username:String,
-    val authorities:Array<String>,
-    val accessToken:String,
-    val tokenType:String
+    val username:String?=null,
+    val authorities:Array<String>?=null,
+    val accessToken:String?=null,
+    val tokenType:String?=null
 )
 
 //{

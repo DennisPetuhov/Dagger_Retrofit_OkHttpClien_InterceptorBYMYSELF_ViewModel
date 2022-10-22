@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/activity_main.xml" value="0.11803444782168186" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.262" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/drawable/ic_launcher_background.xml" value="0.262" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/activity_registr.xml" value="0.25677083333333334" />
       </map>
     </option>
   </component>

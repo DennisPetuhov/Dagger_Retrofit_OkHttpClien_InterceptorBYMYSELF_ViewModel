@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.daggerretrofit_okhttpclieninterceptorbymyself">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:name=".App.App"
+        android:name=".Presenter.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,7 +18,11 @@
         android:theme="@style/Theme.DaggerRetrofit_OkHttpClienInterceptorBYMYSELF"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.RegistrActivity"
+            android:exported="false"
+            android:label="@string/title_activity_registr" />
+        <activity
+            android:name=".Presenter.Login.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
