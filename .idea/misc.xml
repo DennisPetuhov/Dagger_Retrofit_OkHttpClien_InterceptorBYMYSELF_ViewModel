@@ -5,8 +5,13 @@
       <map>
         <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.262" />
         <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/drawable/ic_launcher_background.xml" value="0.262" />
-        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout-w1240dp/activity_registr.xml" value="0.16499330655957162" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout-w936dp/activity_registr.xml" value="0.192578125" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/activity_registr.xml" value="0.25677083333333334" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/activity_second.xml" value="0.25677083333333334" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/fragment_login.xml" value="0.21195652173913043" />
+        <entry key="..\:/Android/Kotliin/Study/DaggerRetrofit_OkHttpClienInterceptorBYMYSELF/app/src/main/res/layout/fragment_regestration.xml" value="0.25677083333333334" />
       </map>
     </option>
   </component>

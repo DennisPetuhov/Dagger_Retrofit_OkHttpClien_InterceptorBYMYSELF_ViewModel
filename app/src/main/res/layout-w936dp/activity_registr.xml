@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".Presenter.Registration.ui.login.RegistrActivity">
+    tools:context=".Presentation.Registration.ui.login.RegistrActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="840dp"

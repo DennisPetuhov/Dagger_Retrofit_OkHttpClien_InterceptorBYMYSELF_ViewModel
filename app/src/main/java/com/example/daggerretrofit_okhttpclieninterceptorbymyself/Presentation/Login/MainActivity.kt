@@ -1,4 +1,4 @@
-package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presenter.Login
+package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login
 
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -6,13 +6,16 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.DI.DaggerViewModelFactory
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.DI.MyComponent
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.MyApi
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.Status
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.SignInForm
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.SignUpForm
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presenter.App
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.App
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.R
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var pref: SharedPreferences
+    private lateinit var vm: LoginViewModel
 
 
     val signup = SignUpForm(
@@ -47,38 +51,51 @@ class MainActivity : AppCompatActivity() {
         "admin"
 
     )
-
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         myComponent = (applicationContext as App).myComponent
         myComponent.inject(this)
         super.onCreate(savedInstanceState)
+        // vm = ViewModelProvider(this, daggerViewModelFactory).get(LoginViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        // navController = Navigation.findNavController(this, R.id.)
 
-        var vm = ViewModelProvider(this, daggerViewModelFactory).get(LoginViewModel::class.java)
+        vm = ViewModelProvider(this, daggerViewModelFactory).get(LoginViewModel::class.java)
 //        val signin = SignInForm(binding.textUserName.text.toString(),binding.textPassword.text.toString() )
         // val signin = SignInForm("DDDD","DDDDD" )
+//        vm.navigation.observe(this) {
+//
+//
+//        }
+//        binding.signIn.setOnClickListener {
+//            val signin = SignInForm(
+//                binding.textUserName.text.toString(),
+//                binding.textPassword.text.toString()
+//            )
+//            //  signInFun(signin)
+//            vm.signIn(signin)
+//            println(
+//                SignInForm(
+//                    binding.textUserName.text.toString(),
+//                    binding.textPassword.text.toString()
+//                )
+//            )
+//        }
+//        binding.signUp.setOnClickListener {
+//            registration(signup)
+//        }
+//        binding.getInfo.setOnClickListener { getInfo() }
+//        observeChanges()
+//
+//        println(setOfString)
+//        println(map["key1"])
 
-        binding.signIn.setOnClickListener {
-            val signin = SignInForm(
-                binding.textUserName.text.toString(),
-                binding.textPassword.text.toString()
-            )
-            //  signInFun(signin)
-            vm.signIn(signin)
-            println(
-                SignInForm(
-                    binding.textUserName.text.toString(),
-                    binding.textPassword.text.toString()
-                )
-            )
-        }
-        binding.signUp.setOnClickListener {
-            registration(signup)
-        }
-        binding.getInfo.setOnClickListener { getInfo() }
+    }
+
+    private fun observeChanges() {
         lifecycleScope.launch {
             vm.flowSignIn.collect {
                 println(it)
@@ -96,10 +113,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
-        println(setOfString)
-        println(map["key1"])
-
     }
 
     private fun getInfo() {

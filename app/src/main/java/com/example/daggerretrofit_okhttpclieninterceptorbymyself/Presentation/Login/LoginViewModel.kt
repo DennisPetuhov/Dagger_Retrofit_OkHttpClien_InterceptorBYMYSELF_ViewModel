@@ -1,7 +1,6 @@
-package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presenter.Login
+package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.SignInForm
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.SignUpForm
 import javax.inject.Inject
@@ -14,13 +13,12 @@ import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.Response
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.SignUpUseCase.SignUpFormUseCase
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.ToSharedPrefUseCase.ToSharedPrefUseCase
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.SignInUseCase.SignInFormUseCase
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.w3c.dom.Comment
 
 
 class LoginViewModel @Inject constructor(
@@ -30,7 +28,7 @@ class LoginViewModel @Inject constructor(
     val signUpUseCase: SignUpFormUseCase,
     val getInfoUsecase: GetInfoFormUseCase,
     val toSharedPrefUseCase: ToSharedPrefUseCase
-) : ViewModel() {
+) : BaseViewModel() {
 
     var tokenLivedata: MutableLiveData<String> = MutableLiveData()
 
@@ -47,6 +45,11 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
+
+
+
+
+
 
     fun signIn(signInForm: SignInForm) {
         mutableFlowSignIn.value = CommentApiState.loading()

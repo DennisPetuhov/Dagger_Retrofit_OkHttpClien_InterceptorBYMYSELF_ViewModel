@@ -2,7 +2,7 @@ package com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.DI
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presenter.Login.MainActivity.Companion.app_preferences
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login.MainActivity.Companion.app_preferences
 import dagger.Module
 import dagger.Provides
 
