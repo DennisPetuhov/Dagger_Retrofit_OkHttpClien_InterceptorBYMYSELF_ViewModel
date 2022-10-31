@@ -2,6 +2,9 @@ package com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.DI
 
 import android.content.Context
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.InfoFragment.InfoFragment
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login.InformationFragment
+
+
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login.LoginFragment
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login.MainActivity
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Regestration.RegestrationFragment
@@ -15,6 +18,7 @@ fun inject(mainActivity: MainActivity)
 fun inject(loginFragment: LoginFragment)
 fun inject (regesterationFragment:RegestrationFragment)
 fun inject (infoFragment: InfoFragment)
+fun inject(informationFragment: InformationFragment)
 @Component.Builder
 interface Builder{
     @BindsInstance

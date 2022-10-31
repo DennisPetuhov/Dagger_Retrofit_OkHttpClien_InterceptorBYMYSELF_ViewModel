@@ -7,11 +7,11 @@ import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.CommentApiState
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.Status
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.FromSharedPreUseCase.FromSharedPrefUseCase
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.SharedPreferences.FromSharedPreUseCase.FromSharedPrefUseCase
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.GetInfoUseCase.GetInfoFormUseCase
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.ResponseSignIn
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.SignUpUseCase.SignUpFormUseCase
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.ToSharedPrefUseCase.ToSharedPrefUseCase
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.SharedPreferences.ToSharedPrefUseCase.ToSharedPrefUseCase
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.SignInUseCase.SignInFormUseCase
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.BaseViewModel
 import kotlinx.coroutines.Dispatchers
@@ -47,10 +47,6 @@ class LoginViewModel @Inject constructor(
     }
 
 
-
-
-
-
     fun signIn(signInForm: SignInForm) {
         mutableFlowSignIn.value = CommentApiState.loading()
         viewModelScope.launch(Dispatchers.IO) {
@@ -64,10 +60,16 @@ class LoginViewModel @Inject constructor(
                     )
                 }
                 .collect {
+
+                   val token= it.data?.accessToken
                     mutableFlowSignIn.value = CommentApiState.success(
                         it.data
 
+
                     )
+
+//
+                    toSharedPrefUseCase.toSharedPrefUseCase(token)
                 }
 
 

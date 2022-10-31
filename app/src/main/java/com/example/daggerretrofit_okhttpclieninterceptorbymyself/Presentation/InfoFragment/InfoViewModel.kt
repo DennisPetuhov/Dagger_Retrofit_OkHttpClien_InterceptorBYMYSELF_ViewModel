@@ -1,8 +1,8 @@
 package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.InfoFragment
 
-import BaseViewModel
-import androidx.lifecycle.ViewModel
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.BaseViewModel
 
-class InfoViewModel : ViewModel() {
+
+class InfoViewModel : BaseViewModel() {
 
 }

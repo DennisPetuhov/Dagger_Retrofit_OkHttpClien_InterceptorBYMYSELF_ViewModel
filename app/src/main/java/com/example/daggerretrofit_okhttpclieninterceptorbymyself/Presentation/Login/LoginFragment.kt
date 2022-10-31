@@ -25,6 +25,7 @@ class LoginFragment : BaseFragment() {
 
     @Inject
     lateinit var daggerViewModelFactory: DaggerViewModelFactory
+
     @Inject
     lateinit var pref: SharedPreferences
 
@@ -57,7 +58,9 @@ class LoginFragment : BaseFragment() {
                 binding.textUserName.text.toString(),
                 binding.textPassword.text.toString()
             )
-            //  signInFun(signin)
+
+//            findNavController().navigate(R.id.afterLoginFragment)
+
             vm.signIn(signin)
             println(
                 SignInForm(
@@ -65,6 +68,8 @@ class LoginFragment : BaseFragment() {
                     binding.textPassword.text.toString()
                 )
             )
+
+
         }
 
     }
@@ -76,13 +81,16 @@ class LoginFragment : BaseFragment() {
                     println(it)
                     when (it.status) {
                         Status.ERROR -> {
-                            println(it.msg)
+                            println("EROOR" + it.msg)
+//                            var loginDerection1 =
+//                                LoginFragmentDirections.actionLoginFragmentToAfterLoginFragment()
+//                            vm.navigate(loginDerection1)
                         }
                         Status.SUCCESS -> {
                             println(it.data)
-                            var loginDerection=LoginFragmentDirections.actionLoginFragmentToInfoFragment()
-                           vm.navigate(loginDerection)
-
+                            var loginDerection =
+                                LoginFragmentDirections.actionLoginFragmentToAfterLoginFragment()
+                            vm.navigate(loginDerection)
                         }
                         Status.LOADING -> {
                             println(it.data)
@@ -93,8 +101,6 @@ class LoginFragment : BaseFragment() {
             }
         }
     }
-
-
 
 
     fun toPreferences(token: String?) {

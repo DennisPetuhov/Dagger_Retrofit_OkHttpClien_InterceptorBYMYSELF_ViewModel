@@ -35,12 +35,16 @@ class Repository @Inject constructor(val pref: SharedPreferences, val api: MyApi
         fromPreferences()?.let { api.helloadmin2("Bearer $it") }
 
 
-    fun toPreferences(token: String?): Unit {
+    fun toPreferences(token: String?) {
         val editor = pref.edit()
         editor.putString("EDIT_TEXT_KEY", token).apply()
     }
 
     fun fromPreferences(): String? {
         return pref.getString("EDIT_TEXT_KEY", "")
+    }
+    fun deleteDataFromPreferences( key:String?):Unit {
+        val editor = pref.edit()
+      return  editor.remove(key).apply()
     }
 }
