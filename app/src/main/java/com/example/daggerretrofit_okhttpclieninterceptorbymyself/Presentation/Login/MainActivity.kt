@@ -85,13 +85,14 @@ class MainActivity : AppCompatActivity() {
 //            )
 //        }
 //        binding.signUp.setOnClickListener {
-//            registration(signup)
+//
 //        }
 //        binding.getInfo.setOnClickListener { getInfo() }
 //        observeChanges()
 //
 //        println(setOfString)
 //        println(map["key1"])
+
 
     }
 
@@ -118,7 +119,8 @@ class MainActivity : AppCompatActivity() {
     private fun getInfo() {
         val token = fromPreferences()
         lifecycleScope.launch(Dispatchers.IO) {
-            val response = fromPreferences()?.let { api.helloadmin2("Bearer $it") }
+            val response = fromPreferences()?.let {
+                api.helloadmin2("Bearer $it") }
             if (response!!.isSuccessful) {
                 var body = response.body()
                 lifecycleScope.launch(Dispatchers.Main) {
@@ -165,26 +167,29 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-    fun registration(signUp: SignUpForm) {
-        lifecycleScope.launch(Dispatchers.IO) {
-            val response = api.signUp(signUp)
-            if (response.isSuccessful) {
-                val b: String? = response.body()
-                lifecycleScope.launch(Dispatchers.Main) {
-
-                    Toast.makeText(this@MainActivity, b, Toast.LENGTH_SHORT).show()
-                }
-            } else {
-
-                lifecycleScope.launch(Dispatchers.Main) {
-
-                    Toast.makeText(this@MainActivity, "*****", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-        }
-
-    }
+//    fun registration(signUp: SignUpForm) {
+//        lifecycleScope.launch(Dispatchers.IO) {
+//            val response = api.signUp(signUp)
+//            println(response.toString()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//            if (response.isSuccessful) {
+//                val b: String? = response.body()
+//                lifecycleScope.launch(Dispatchers.Main) {
+//
+//                    Toast.makeText(this@MainActivity, b, Toast.LENGTH_SHORT).show()
+//                    println(b+"response successful")
+//                }
+//            } else {
+//
+//                lifecycleScope.launch(Dispatchers.Main) {
+//
+//                    Toast.makeText(this@MainActivity, "*****", Toast.LENGTH_SHORT).show()
+//                    println("ERROR REGISTRATION response !isSuccessful")
+//                }
+//
+//            }
+//        }
+//
+//    }
 
     fun toPreferences(token: String?) {
         val editor = pref.edit()

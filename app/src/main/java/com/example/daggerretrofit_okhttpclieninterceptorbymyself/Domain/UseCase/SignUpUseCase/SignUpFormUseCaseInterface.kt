@@ -1,8 +1,9 @@
 package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.UseCase.SignUpUseCase
 
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.ApiState
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.SignUpForm
-import retrofit2.Response
+import kotlinx.coroutines.flow.Flow
 
 interface SignUpFormUseCaseInterface {
-    suspend fun signUp(sigUpForm: SignUpForm): Response<String>
+    suspend fun signUp(sigUpForm: SignUpForm): Flow<ApiState<String>>
 }

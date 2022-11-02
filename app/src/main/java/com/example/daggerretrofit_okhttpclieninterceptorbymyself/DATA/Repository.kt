@@ -1,7 +1,7 @@
 package com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA
 
 import android.content.SharedPreferences
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.CommentApiState
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.ApiState
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.MyApi
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.ResponseSignIn
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.SignInForm
@@ -16,23 +16,37 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(val pref: SharedPreferences, val api: MyApi) {
 
-    suspend fun signUp(sigUpForm: SignUpForm) = api.signUp(sigUpForm)
+    suspend fun signUp(sigUpForm: SignUpForm): Flow<ApiState<String>> {
+        return flow {
+            val response = api.signUp(sigUpForm)
+            emit(ApiState.success(response))
+        }.flowOn(Dispatchers.IO)
+    }
 
-        //  suspend fun signIn(signInForm: SignInForm) = api.signIn(signInForm)
+    //  suspend fun signIn(signInForm: SignInForm) = api.signIn(signInForm)
 
 
-
-
-
-    suspend fun signIn(signInForm: SignInForm): Flow<CommentApiState<ResponseSignIn>> {
+    suspend fun signIn(signInForm: SignInForm): Flow<ApiState<ResponseSignIn>> {
         return flow {
             val response = api.signIn(signInForm)
-            emit(CommentApiState.success(response))
+            emit(ApiState.success(response))
         }.flowOn(Dispatchers.IO)
     }
 
     suspend fun getInfo(): Response<String>? =
         fromPreferences()?.let { api.helloadmin2("Bearer $it") }
+
+
+    suspend fun informationRequest(): Flow<ApiState<String>> {
+        return flow {
+            val response = api.helloUsername()
+
+//                fromPreferences()?.let {
+//                api.helloUsername("Bearer $it")
+//            }
+            emit(ApiState.success(response))
+        }.flowOn(Dispatchers.IO)
+    }
 
 
     fun toPreferences(token: String?) {
@@ -43,8 +57,9 @@ class Repository @Inject constructor(val pref: SharedPreferences, val api: MyApi
     fun fromPreferences(): String? {
         return pref.getString("EDIT_TEXT_KEY", "")
     }
-    fun deleteDataFromPreferences( key:String?):Unit {
+
+    fun deleteDataFromPreferences(key: String?): Unit {
         val editor = pref.edit()
-      return  editor.remove(key).apply()
+        return editor.remove(key).apply()
     }
 }

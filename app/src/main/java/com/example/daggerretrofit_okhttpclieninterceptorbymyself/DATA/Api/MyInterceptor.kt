@@ -19,7 +19,8 @@ class  MyInterceptor @Inject constructor(var pref: SharedPreferences) : Intercep
         lateinit var newRequest: Request
         println(request.url().toString()+"********************")
         println(request.url().host().toString()+"HOST********************")
-        if ((request.url().toString().contentEquals("https://jwt-springsecurity.herokuapp.com/api/auth/signin", true) ||
+        if ((request.url().toString().contentEquals("https://jwt-springsecurity.herokuapp.com/api/auth/signin", true)
+                    ||
                     request.url().toString()
                         .contentEquals("https://jwt-springsecurity.herokuapp.com/api/auth/signup",true)
                     )
@@ -27,10 +28,10 @@ class  MyInterceptor @Inject constructor(var pref: SharedPreferences) : Intercep
             newRequest = requestBuilder.build()
         } else{
             newRequest = requestBuilder
-                .header("Authorisation", "Bearer ${pref.getString("EDIT_TEXT_KEY","")}")
+                .header("Authorization", "Bearer ${pref.getString("EDIT_TEXT_KEY","")}")
                 .build()
-            println(newRequest.url())
-            println(newRequest.header("Authorisation"))
+            println(newRequest.url().toString()+"INTERCEPTOR")
+            println(newRequest.header("Authorization"))
 
         }
         return chain.proceed(newRequest)

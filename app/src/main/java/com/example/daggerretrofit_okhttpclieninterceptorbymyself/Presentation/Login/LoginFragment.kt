@@ -2,18 +2,19 @@ package com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.L
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.*
-import androidx.navigation.fragment.findNavController
+
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.Api.Status
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.DI.DaggerViewModelFactory
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Domain.SignInForm
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.BaseFragment
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.R
+
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.databinding.FragmentLoginBinding
+
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -42,6 +43,7 @@ class LoginFragment : BaseFragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         observeNavigation(vm)
         observeChanges()
+      
         return binding.root
 
 
@@ -72,6 +74,11 @@ class LoginFragment : BaseFragment() {
 
         }
 
+        binding.buttonRegistrarion.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToRegestrationFragment()
+            vm.navigate(action)
+        }
+
     }
 
     private fun observeChanges() {
@@ -82,15 +89,14 @@ class LoginFragment : BaseFragment() {
                     when (it.status) {
                         Status.ERROR -> {
                             println("EROOR" + it.msg)
-//                            var loginDerection1 =
-//                                LoginFragmentDirections.actionLoginFragmentToAfterLoginFragment()
-//                            vm.navigate(loginDerection1)
                         }
                         Status.SUCCESS -> {
                             println(it.data)
-                            var loginDerection =
+                            val loginDerection =
                                 LoginFragmentDirections.actionLoginFragmentToAfterLoginFragment()
                             vm.navigate(loginDerection)
+
+
                         }
                         Status.LOADING -> {
                             println(it.data)
@@ -101,6 +107,7 @@ class LoginFragment : BaseFragment() {
             }
         }
     }
+
 
 
     fun toPreferences(token: String?) {

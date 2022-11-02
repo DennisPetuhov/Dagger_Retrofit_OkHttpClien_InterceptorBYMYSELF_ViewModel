@@ -28,11 +28,18 @@
         <action
             android:id="@+id/action_loginFragment_to_infoFragment2"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_regestrationFragment"
+            app:destination="@id/regestrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/regestrationFragment"
         android:name="com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Regestration.RegestrationFragment"
-        android:label="RegestrationFragment" />
+        android:label="RegestrationFragment" >
+        <action
+            android:id="@+id/action_regestrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.InfoFragment.InfoFragment"
@@ -40,11 +47,15 @@
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/afterLoginFragment"
-        android:name="com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login.InformationFragment"
+        android:name="com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.InformationFragment.InformationFragment"
         android:label="fragment_after_login"
-        tools:layout="@layout/fragment_after_login">
+        tools:layout="@layout/information_fragment">
         <action
             android:id="@+id/action_afterLoginFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <argument
+            android:name="HelloAdmin"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
 </navigation>

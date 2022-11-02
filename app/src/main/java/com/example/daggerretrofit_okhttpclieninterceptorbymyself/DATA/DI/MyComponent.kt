@@ -2,7 +2,7 @@ package com.example.daggerretrofit_okhttpclieninterceptorbymyself.DATA.DI
 
 import android.content.Context
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.InfoFragment.InfoFragment
-import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login.InformationFragment
+import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.InformationFragment.InformationFragment
 
 
 import com.example.daggerretrofit_okhttpclieninterceptorbymyself.Presentation.Login.LoginFragment
