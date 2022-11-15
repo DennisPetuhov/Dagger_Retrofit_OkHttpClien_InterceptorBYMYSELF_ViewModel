@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -56,6 +57,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         myComponent = (applicationContext as App).myComponent
         myComponent.inject(this)
+        Thread.sleep(2000)
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         // vm = ViewModelProvider(this, daggerViewModelFactory).get(LoginViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)

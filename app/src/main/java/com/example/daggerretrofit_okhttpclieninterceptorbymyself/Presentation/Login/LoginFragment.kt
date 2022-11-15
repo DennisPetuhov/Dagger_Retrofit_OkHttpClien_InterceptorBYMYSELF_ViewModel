@@ -58,6 +58,7 @@ class LoginFragment : BaseFragment() {
         binding.signIn.setOnClickListener {
             val signin = SignInForm(
                 binding.textUserName.text.toString(),
+
                 binding.textPassword.text.toString()
             )
 
@@ -66,6 +67,7 @@ class LoginFragment : BaseFragment() {
             vm.signIn(signin)
             println(
                 SignInForm(
+//                    binding.textUserName.text.toString(),
                     binding.textUserName.text.toString(),
                     binding.textPassword.text.toString()
                 )
